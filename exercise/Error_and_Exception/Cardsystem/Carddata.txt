@@ -1,0 +1,9 @@
+previous balance
+25
+debits
+21.64
+541.24
+25
+-25-541.24finance charge/late fees
+7.30
+5

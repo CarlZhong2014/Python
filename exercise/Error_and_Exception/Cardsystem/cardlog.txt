@@ -1,0 +1,10 @@
+accoutn log:
+ignored: could not convert string to float: previous balance
+data...processed
+ignored: could not convert string to float: debits
+data...processed
+data...processed
+data...processed
+ignored: invalid literal for float(): -25-541.24finance charge/late fees
+data...processed
+data...processed

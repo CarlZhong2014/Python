@@ -1,0 +1,171 @@
+	getchar();
+
+}
+ getchar();
+
+}
+	getchar();
+
+}
+
+	getchar();
+
+}
+	return total;
+
+}
+
+
+
+}
+
+
+}
+
+
+
+
+    return 0;
+
+}
+
+    return 0;
+
+}
+
+	 }
+
+}
+	printf("Level %d : n2 location %p\n",n,&n);
+
+}
+	exit(0);
+
+}
+
+	return 0;
+
+}
+
+	return;
+
+}
+
+}
+
+
+
+	getchar();
+
+}
+ getchar();
+
+}
+	getchar();
+
+}
+
+	getchar();
+
+}
+	return total;
+
+}
+
+
+
+}
+
+
+}
+
+
+
+
+    return 0;
+
+}
+
+    return 0;
+
+}
+
+	 }
+
+}
+	printf("Level %d : n2 location %p\n",n,&n);
+
+}
+	exit(0);
+
+}
+
+	return 0;
+
+}
+
+	return;
+
+}
+
+}
+
+
+
+	getchar();
+
+}
+ getchar();
+
+}
+	getchar();
+
+}
+
+	getchar();
+
+}
+	return total;
+
+}
+
+
+
+}
+
+
+}
+
+
+
+
+    return 0;
+
+}
+
+    return 0;
+
+}
+
+	 }
+
+}
+	printf("Level %d : n2 location %p\n",n,&n);
+
+}
+	exit(0);
+
+}
+
+	return 0;
+
+}
+
+	return;
+
+}
+
+}
+
+
+
