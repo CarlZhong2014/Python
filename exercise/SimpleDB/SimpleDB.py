@@ -45,7 +45,22 @@ Phone number: """
 	print "%s is not existing!!!" % phone
 	
 def addMember():
-	print "add"
+	prompt = """
+This is addition menu
+Who are you want to add? """
+	name = raw_input(prompt)
+	if name not in contactDB:						#判断信息是否存在，不存在则添加。存在则提示存在。
+		phone = raw_input("Whose number is : ")
+		birth = raw_input("Whose birthday is : ")
+		addr = raw_input("Where are who live : ")
+		contactDB[name] = {							#将数据加入contactDB中。
+			"Phone":phone, 
+			"Birthday":birth,
+			"Addr":addr
+			}
+	else:
+		print name,"is existing in contact."	
+
 def delMember():
 	print "del"
 
