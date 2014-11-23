@@ -21,16 +21,18 @@ funDict = {								#将函数存放在字典中方便调用
 	'd' : 'delMember()'
 }
 
-def SearchName():
+def SearchName(name=""):
 	prompt = """
  Who are you wants to searching? \n
  Name : """
-	name = raw_input(prompt)
+ 	if name =="":
+		name = raw_input(prompt)
+
 	if name in contactDB:
 		print "Name: %s \n Phone: %s \n Birthday: %s \n Addr: %s." % \
 		(name, contactDB[name]['Phone'], contactDB[name]['Birthday'], contactDB[name]['Addr'])
 	else:
-		print "%s is not existing!!!"
+		print "%s is not existing!!!" % name
 
 def SearchPhone():
 	prompt = """
@@ -62,8 +64,19 @@ Who are you want to add? """
 		print name,"is existing in contact."	
 
 def delMember():
-	print "del"
-
+	prompt = """
+This is delete module
+Who will out of this contact? 
+name: """
+	name = raw_input(prompt)
+	if name in contactDB:
+		SearchName(name)
+		choice = raw_input("Do you want to delete who?[Y/N]").strip()[0].lower()
+		if choice == "y":
+			del contactDB[name]
+			print "%s is deleted in this contact." % name
+	else:
+		print name,"is not existing in contact."
 def menu():
 	prompt="""								
 This is my contact:	
