@@ -39,8 +39,8 @@ def SearchPhone():
 What phone number are you want to searching!!\n
 Phone number: """
 	phone = raw_input(prompt)
-	for element in contactDB.items():
-		if element[1]["Phone"] == phone:
+	for element in contactDB.items():		#items方法以list形式返回contactDB的key-value。即list[0]为key，list[1]为value。
+		if element[1]["Phone"] == phone:    #通过以上方法，以phone为关键字，输出phone主的信息
 			print "Name: %s \n Phone: %s \n Birthday: %s \n Addr: %s." % \
 			(element[0], element[1]['Phone'],element[1]['Birthday'],element[1]['Addr'])
 			return None
