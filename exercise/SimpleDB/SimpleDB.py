@@ -103,4 +103,4 @@ Please enter Your choice:"""										#菜单内容
 if __name__ == "__main__":
 	menu()
 else:
-	print "nothing"
+	print "This module couldn't use by other module."
