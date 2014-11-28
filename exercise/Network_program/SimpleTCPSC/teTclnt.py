@@ -13,9 +13,13 @@ while True:
 	if not data:			#判断数据是否为空
 		break
 	tcpCliSock.send(data)	#发送数据
-	data = tcpCliSock.recv(BUFSIZ)	#接收服务器返回的数据
+	
+	if data == 'exit':
+		tcpCliSock.close()			#关闭socket
+		print "exiting from foreign host."
+		break
+	else:
+		data = tcpCliSock.recv(BUFSIZ)	#接收服务器返回的数据
 	if not data:
 		break
 	print data 				#输出服务器返回的数据
-
-tcpCliSock.close()			#关闭socket

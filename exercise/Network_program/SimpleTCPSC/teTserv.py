@@ -2,8 +2,12 @@
 from socket import *
 from time import ctime
 
+def cliSockClose():					#客户端断开处理
+	tcpCliSock.close()				#关闭与客户端的Socket （必）
+	print 'IP:%s PORT:%d is quit' % (addr[0],addr[1])
+
 HOST = ''					#设置主机ip，如果为空则表示所有网卡上的所有ip
-PORT = 4322				#设置端口号
+PORT = 4322					#设置端口号（数字）
 BUFSIZ = 1024				#设置缓冲区大小，设定为1K
 ADDR = (HOST, PORT)			
 
@@ -17,12 +21,21 @@ while True:
 	print '...connection from:', addr
 
 	while True:
-		data = tcpCliSock.recv(BUFSIZ)	#接收客户端发来的数据
+		try:
+			data = tcpCliSock.recv(BUFSIZ)	#接收客户端发来的数据
+		except error:
+			cliSockClose()					#客户端断开处理
+			break
+
 		if not data:
 			break
-		tcpCliSock.send('[%s] %s' % 	
+		if data == 'exit':
+			cliSockClose()					#客户端断开处理
+			break
+		else:
+			tcpCliSock.send('[%s] %s' % 
 			(ctime(), data ))			#给客户端发来的数据加上个时间戳后返回
+		
 
-		tcpCliSock.close()				#关闭与客户端的Socket （必）
 
 tcpSerSock.close()						#关闭TCP Socket （必）
