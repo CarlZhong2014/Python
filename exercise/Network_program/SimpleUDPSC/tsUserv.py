@@ -15,6 +15,7 @@ try:
 	while True:
 		print 'waiting for message...'
 		data, addr = udpSocket.recvfrom(BUFSIZ)
+		print data
 		udpSocket.sendto('[%s] %s' % (
 			ctime(), data), addr)
 		print '...recevied from and returned to:', addr
