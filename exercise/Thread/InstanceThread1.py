@@ -3,10 +3,10 @@
 import time
 import threading
 
-loops = [4, 2]
+loops = [4, 2]									#设置两个线程的睡眠时间分别是4s和2s。
 def loop(nloop, nsec):
 	print 'start loop', nloop, 'at:', time.ctime()
-	time.sleep(nsec)
+	time.sleep(nsec)							#睡眠nsec秒
 	print 'loop', nloop, 'done at:', time.ctime()
 
 def main():
