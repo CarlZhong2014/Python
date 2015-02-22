@@ -1,54 +1,55 @@
-#config=utf-8
+# config=utf-8
 import socket
-import time
 import threading
 import sys
-HOST = 'localhost'
-PORT = 3380
+HOST = ''
+PORT = 3388
 BUSIZ = 1024
 ADDR = (HOST, PORT)
 
+
 def Trec(Rsocket, CLocal):
-	while True:
-		RData = Rsocket.recv(BUSIZ)
-		if not RData :
-			continue
-		elif RData in ('quit', 'QUIT'):
-			Rsocke.close 
-		else:
-			Rstr = '\nFrom ' + CLocal[0] + ' say: ' + RData
-			sys.stdout.write(Rstr)
-		print 'aa'
-		
+    while True:
+        RData = Rsocket.recv(BUSIZ)
+        if not RData:
+            continue
+        elif RData in ('quit', 'QUIT'):
+            Rsocket.close()
+        else:
+            Rstr = '\nFrom ' + CLocal[0] + ' say: ' + RData
+            sys.stdout.write(Rstr)
 
-def Tsend(ConLocal):
-	
-	
+
+def Tsend(Dsocket):
+    while True:
+        SData = raw_input('\n>')
+        Dsocket.send(SData)
+
+
 def main():
-	TSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	TSerSock.bind(ADDR)
-	TSerSock.listen(1)
+    TSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    TSerSock.bind(ADDR)
+    TSerSock.listen(1)
+    threads = []
+    while True:
+        print 'waiting for connnection'
+        ConSock, ConLocal = TSerSock.accept()
+        print '... Connect from', ConLocal
+        CT = threading.Thread(
+            target=Trec,
+            args=(ConSock, ConLocal))
 
-	threads = []
-	while True:
-		print 'waiting for connnection'
-		ConSock, ConLocal = TSerSock.accept()
-		print '... Connect from', ConLocal
-		CT = threading.Thread(
-			target = Trec, 
-			args = (ConSock, ConLocal))
-		
-		threads.append(CT)
+        threads.append(CT)
 
-		CT = threading.Thread(
-			target = Tsend,
-			args = (ConLocal))
-		for i in range(len(threads)):
-			threads[i].start()
-
+        CT = threading.Thread(
+            target=Tsend,
+            args=(ConSock,))
+        threads.append(CT)
+        for i in range(len(threads)):
+            threads[i].start()
+        threads[0].join()
+    TSerSock.close()
 if __name__ == '__main__':
-	main()
+    main()
 else:
-	print 'Nothing to do!!!'
-
-
+    print 'Nothing to do!!!'
